@@ -1,0 +1,65 @@
+﻿@model Egabinet.Models.PatientViewModel;
+
+<div>
+    <h2>Patient account</h2>
+    <h4>@DateTime.Now.ToLongDateString()</h4>
+</div>
+<div class="header">
+    <div>
+        <img src="~/images/patient.png" class="avatar mb-3">
+    </div>
+    <div>
+        <div>Patient: @Model.Name @Model.Surname</div>
+    </div>
+</div>
+
+<div class="buttons">
+    <a class="button-card" asp-area="" asp-controller="Patient" asp-action="ShowTimesheet">Show Timesheet</a>
+    <a class="button-card" asp-area="" asp-controller="Patient" asp-action="EditPatient">Edit my account</a>
+</div>
+
+
+<style>
+    .avatar {
+        border-radius: 50%;
+        height: 120px;
+    }
+
+    .header {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        font-size: 20px;
+        margin-bottom: 30px;
+        margin-top: 30px;
+        font-weight: 600;
+    }
+
+    .buttons {
+        margin-top: 70px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-card {
+        width: 200px;
+        height: 100px;
+        background-color: #7debdd;
+        font-size: 20px;
+        font-weight: 600;
+        border-radius: 4px;
+        text-decoration: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .button-card:hover {
+        background-color: #64d6c7;
+        color: white;
+    }
+</style>

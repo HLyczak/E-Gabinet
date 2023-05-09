@@ -1,4 +1,4 @@
-namespace E_Gabinet.Models
+namespace Egabinet.Models
 {
     public class ErrorViewModel
     {

@@ -31,10 +31,10 @@ namespace Egabinet.Data
             modelBuilder.Entity<TimeSheet>().HasOne(p => p.Room).WithMany(s => s.TimeSheet).OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<IdentityRole>().HasData
-                 (new IdentityRole { Name = "Administrator", Id = "72f2ff00-761f-4727-b07c-5381992b5e0a", NormalizedName = "ADMINISTRATOR" },
-                 new IdentityRole { Name = "Reader", Id = "c1eeb9bd-5412-495a-8abf-a4157f1b546d", NormalizedName = "READER" },
-                 new IdentityRole { Name = "Writer", Id = "04d94d89-fe74-43ba-b052-90d5f3dea95f", NormalizedName = "WRITER" }
-                 );
+                (new IdentityRole { Name = "Administrator", Id = "72f2ff00-761f-4727-b07c-5381992b5e0a", NormalizedName = "ADMINISTRATOR" },
+                new IdentityRole { Name = "Reader", Id = "c1eeb9bd-5412-495a-8abf-a4157f1b546d", NormalizedName = "READER" },
+                new IdentityRole { Name = "Writer", Id = "04d94d89-fe74-43ba-b052-90d5f3dea95f", NormalizedName = "WRITER" }
+                );
 
             modelBuilder.Entity<Specialization>().HasData
                 (new Specialization { Id = "6a3d526e-1fb6-4de7-bde5-e0754fc58aec", Value = "Lekarz rodzinny" },
@@ -55,21 +55,21 @@ namespace Egabinet.Data
             //PasswordHash = hasher.HashPassword(null, "Admin123!")
 
             List<IdentityUser> users = new List<IdentityUser> {
-                 new IdentityUser { Id = "66126f74-f32b-435d-9e24-b3ed8b3d6011", UserName = "user1@op.pl", NormalizedUserName = "USER1@OP.PL", NormalizedEmail="USER1@OP.PL", Email = "user1@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "26dfb75e-5f31-4a54-9844-f019998a61d1", UserName = "user2@op.pl", NormalizedUserName = "USER2@OP.PL", NormalizedEmail="USER2@OP.PL", Email = "user2@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "64791af4-436d-4419-b3e1-14641bdb2493", UserName = "user3@op.pl", NormalizedUserName = "USER3@OP.PL", NormalizedEmail="USER3@OP.PL", Email = "user3@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "cef7f7aa-d198-4373-b441-926d8e52dbb1", UserName = "user4@op.pl", NormalizedUserName = "USER4@OP.PL", NormalizedEmail="USER4@OP.PL", Email = "user4@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "66126f74-f32b-435d-9e24-b3ed8b3d6011", UserName = "user1@op.pl", NormalizedUserName = "USER1@OP.PL", NormalizedEmail="USER1@OP.PL", Email = "user1@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "26dfb75e-5f31-4a54-9844-f019998a61d1", UserName = "user2@op.pl", NormalizedUserName = "USER2@OP.PL", NormalizedEmail="USER2@OP.PL", Email = "user2@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "64791af4-436d-4419-b3e1-14641bdb2493", UserName = "user3@op.pl", NormalizedUserName = "USER3@OP.PL", NormalizedEmail="USER3@OP.PL", Email = "user3@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "cef7f7aa-d198-4373-b441-926d8e52dbb1", UserName = "user4@op.pl", NormalizedUserName = "USER4@OP.PL", NormalizedEmail="USER4@OP.PL", Email = "user4@op.pl", EmailConfirmed = true },
 
-                 new IdentityUser { Id = "00221f79-bc71-4186-9e5d-bfd57a80a43f", UserName = "user5@op.pl", NormalizedUserName = "USER5@OP.PL", NormalizedEmail="USER5@OP.PL", Email = "user5@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "32923230-6c8c-4510-b73e-d9bcf2484879", UserName = "user6@op.pl", NormalizedUserName = "USER6@OP.PL", NormalizedEmail="USER6@OP.PL", Email = "user6@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "ed216c2a-3e1c-486f-b8ca-5f13bd8baee8", UserName = "user7@op.pl", NormalizedUserName = "USER7@OP.PL", NormalizedEmail="USER7@OP.PL", Email = "user7@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "c2ebef8b-eee6-4328-ba4d-f01a04fe4f83", UserName = "user8@op.pl", NormalizedUserName = "USER8@OP.PL", NormalizedEmail="USER8@OP.PL", Email = "user8@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "00221f79-bc71-4186-9e5d-bfd57a80a43f", UserName = "user5@op.pl", NormalizedUserName = "USER5@OP.PL", NormalizedEmail="USER5@OP.PL", Email = "user5@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "32923230-6c8c-4510-b73e-d9bcf2484879", UserName = "user6@op.pl", NormalizedUserName = "USER6@OP.PL", NormalizedEmail="USER6@OP.PL", Email = "user6@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "ed216c2a-3e1c-486f-b8ca-5f13bd8baee8", UserName = "user7@op.pl", NormalizedUserName = "USER7@OP.PL", NormalizedEmail="USER7@OP.PL", Email = "user7@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "c2ebef8b-eee6-4328-ba4d-f01a04fe4f83", UserName = "user8@op.pl", NormalizedUserName = "USER8@OP.PL", NormalizedEmail="USER8@OP.PL", Email = "user8@op.pl", EmailConfirmed = true },
 
-                 new IdentityUser { Id = "ef9632fc-d406-412f-9b7a-09b902db6dfa", UserName = "user9@op.pl", NormalizedUserName = "USER9@OP.PL", NormalizedEmail="USER9@OP.PL", Email = "user9@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "785a5776-fbba-4021-a263-4b9daade6ac8", UserName = "user10@op.pl", NormalizedUserName = "USER10@OP.PL", NormalizedEmail="USER10@OP.PL", Email = "user10@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "452db704-3650-457a-a7da-ca545a521776", UserName = "user11@op.pl", NormalizedUserName = "USER11@OP.PL", NormalizedEmail="USER11@OP.PL", Email = "user11@op.pl", EmailConfirmed = true },
-                 new IdentityUser { Id = "7fe50ba2-def6-4ac0-8b3e-87d3b4ce693f", UserName = "user12@op.pl", NormalizedUserName = "USER12@OP.PL", NormalizedEmail="USER12@OP.PL", Email = "user12@op.pl", EmailConfirmed = true }
-             };
+                new IdentityUser { Id = "ef9632fc-d406-412f-9b7a-09b902db6dfa", UserName = "user9@op.pl", NormalizedUserName = "USER9@OP.PL", NormalizedEmail="USER9@OP.PL", Email = "user9@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "785a5776-fbba-4021-a263-4b9daade6ac8", UserName = "user10@op.pl", NormalizedUserName = "USER10@OP.PL", NormalizedEmail="USER10@OP.PL", Email = "user10@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "452db704-3650-457a-a7da-ca545a521776", UserName = "user11@op.pl", NormalizedUserName = "USER11@OP.PL", NormalizedEmail="USER11@OP.PL", Email = "user11@op.pl", EmailConfirmed = true },
+                new IdentityUser { Id = "7fe50ba2-def6-4ac0-8b3e-87d3b4ce693f", UserName = "user12@op.pl", NormalizedUserName = "USER12@OP.PL", NormalizedEmail="USER12@OP.PL", Email = "user12@op.pl", EmailConfirmed = true }
+            };
             modelBuilder.Entity<IdentityUser>().HasData(users);
 
 
