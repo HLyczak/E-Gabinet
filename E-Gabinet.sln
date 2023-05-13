@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-Gabinet", "E-Gabinet\E-Gabinet.csproj", "{0F17F0E7-5C7C-4F8B-AD12-FE65ED01B421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{91253512-81B9-49B9-8608-6D95A8CA177D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{91253512-81B9-49B9-8608-6D95A8CA177D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments", "Paymentss\Payments.csproj", "{450BCF1D-7930-4C19-9454-13ECBFE26E73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{91253512-81B9-49B9-8608-6D95A8CA177D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91253512-81B9-49B9-8608-6D95A8CA177D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91253512-81B9-49B9-8608-6D95A8CA177D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450BCF1D-7930-4C19-9454-13ECBFE26E73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450BCF1D-7930-4C19-9454-13ECBFE26E73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450BCF1D-7930-4C19-9454-13ECBFE26E73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450BCF1D-7930-4C19-9454-13ECBFE26E73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
