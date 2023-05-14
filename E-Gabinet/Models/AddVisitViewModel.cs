@@ -30,6 +30,12 @@ namespace Egabinet.Models
         public string SelectedRoom { get; set; }
         public IEnumerable<SelectListItem> Rooms { get; set; }
 
+        [Required]
+        [Display(Name = "Price")]
+        [Range(1, 99999)]
+        public decimal Amount { get; set; }
+
+
     }
 
 

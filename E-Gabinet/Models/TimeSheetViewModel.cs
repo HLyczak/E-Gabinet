@@ -19,5 +19,13 @@ namespace Egabinet.Models
 
         [Display(Name = "Id")]
         public string Id { get; set; }
+
+
+        [Display(Name = "Price")]
+        public decimal Amount { get; set; }
+
+        [Display(Name = "PaymentId")]
+        public string? PaymentId { get; set; }
+
     }
 }

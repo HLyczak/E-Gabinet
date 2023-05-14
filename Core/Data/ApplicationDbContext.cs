@@ -109,10 +109,10 @@ namespace Egabinet.Data
                 );
 
             modelBuilder.Entity<TimeSheet>().HasData
-            (new TimeSheet { Id = "06223eb9-588c-4b2d-a0ab-c3c5ad65ae78", PatientId = "9262b74c-f7b4-47ba-8fcf-087241096f34", DoctorId = "3e01671b-18fc-4f8c-bfd8-fa12666a99b6", RoomId = "d36af7ac-73cb-459e-847f-0abea3581814", Data = new DateTime(2022, 05, 10) },
-             new TimeSheet { Id = "56932a73-5813-4215-bc39-686b11a12afc", PatientId = "23159457-b301-4839-932a-3fd939f8b6c4", DoctorId = "1769f6fc-fb40-44ed-bb10-70c0c13a97e3", RoomId = "4b4e2a8f-ab04-40ab-827d-3c7789208e4c", Data = new DateTime(2022, 05, 10) },
-             new TimeSheet { Id = "64060098-a52b-4e91-b5b6-63d292cea083", PatientId = "9de0d585-60a6-445c-910c-e26ccaf46274", DoctorId = "ba61c248-a31d-4c10-9e7c-9d8d32defeea", RoomId = "c5f12060-322b-42be-bba6-689e2e0c5721", Data = new DateTime(2022, 10, 10) },
-             new TimeSheet { Id = "7fd77adc-02e5-444e-9b7e-feb2113ac22f", PatientId = "816c62f5-2b08-4042-8008-07a46b920921", DoctorId = "519e3b1c-8357-470d-9643-9be49bd669a3", RoomId = "525e8058-b3a1-4a9f-83e5-355848d1e6c5", Data = new DateTime(2022, 10, 10) }
+            (new TimeSheet { Id = "06223eb9-588c-4b2d-a0ab-c3c5ad65ae78", PatientId = "9262b74c-f7b4-47ba-8fcf-087241096f34", DoctorId = "3e01671b-18fc-4f8c-bfd8-fa12666a99b6", RoomId = "d36af7ac-73cb-459e-847f-0abea3581814", Data = new DateTime(2022, 05, 10), Amount = 25, PaymentId = null },
+             new TimeSheet { Id = "56932a73-5813-4215-bc39-686b11a12afc", PatientId = "23159457-b301-4839-932a-3fd939f8b6c4", DoctorId = "1769f6fc-fb40-44ed-bb10-70c0c13a97e3", RoomId = "4b4e2a8f-ab04-40ab-827d-3c7789208e4c", Data = new DateTime(2022, 05, 10), Amount = 25, PaymentId = null },
+             new TimeSheet { Id = "64060098-a52b-4e91-b5b6-63d292cea083", PatientId = "9de0d585-60a6-445c-910c-e26ccaf46274", DoctorId = "ba61c248-a31d-4c10-9e7c-9d8d32defeea", RoomId = "c5f12060-322b-42be-bba6-689e2e0c5721", Data = new DateTime(2022, 10, 10), Amount = 25, PaymentId = null },
+             new TimeSheet { Id = "7fd77adc-02e5-444e-9b7e-feb2113ac22f", PatientId = "816c62f5-2b08-4042-8008-07a46b920921", DoctorId = "519e3b1c-8357-470d-9643-9be49bd669a3", RoomId = "525e8058-b3a1-4a9f-83e5-355848d1e6c5", Data = new DateTime(2022, 10, 10), Amount = 25, PaymentId = null }
 
             );
             modelBuilder.Entity<IdentityUserRole<string>>().HasData

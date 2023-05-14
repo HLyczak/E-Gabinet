@@ -18,5 +18,10 @@
         <label for="" class="form-label">Select Data</label>
         <input type="datetime-local" min="@DateTime.Now.ToString("yyyy-MM-ddThh:mm")" class="form-control" asp-for="SelectedData">
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Price</label>
+        <input type="text" class="form-control" asp-for="Amount">
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
     <button type="submit" class="btn btn-primary mt-2" >Add</button>
 </form>

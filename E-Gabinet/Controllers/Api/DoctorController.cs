@@ -22,12 +22,12 @@ namespace Egabinet.Controllers.Api
         [HttpGet("{id}")]
         public async Task<ActionResult<DoctorViewModel>> GetDoctor(string id)
         {
-            var doctor = await _dbContext.Doctor.FirstOrDefaultAsync(d => d.Id == id);
+            Doctor? doctor = await _dbContext.Doctor.FirstOrDefaultAsync(d => d.Id == id);
             if (doctor == null)
             {
                 return NotFound();
             }
-            var doctorviemodel = new DoctorViewModel { Id = doctor.Id, Name = doctor.Name, Surname = doctor.Surname, Adress = doctor.Adress, PermissionNumber = doctor.PermissionNumber, SpecializationId = doctor.SpecializationId };
+            DoctorViewModel doctorviemodel = new DoctorViewModel { Id = doctor.Id, Name = doctor.Name, Surname = doctor.Surname, Adress = doctor.Adress, PermissionNumber = doctor.PermissionNumber, SpecializationId = doctor.SpecializationId };
 
             return Ok(doctorviemodel);
         }

@@ -13,6 +13,7 @@ namespace Payments.Dto
 
         [Required]
         [Display(Name = "Amount")]
+        [Range(1, 999999)]
         public decimal Amount { get; set; }
 
 

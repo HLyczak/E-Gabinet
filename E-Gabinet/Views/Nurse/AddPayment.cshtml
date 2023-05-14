@@ -1,0 +1,19 @@
+﻿@model Egabinet.Models.AddPaymentDto
+
+
+
+<h1>Add Payment</h1>
+<form method="post" action="AddVisit" class="mt-5" >
+    <div class="form-group mt-1" id="Visit">
+        <label asp-for=TimesheetId>Selected Visit</label>
+        @Html.DropDownListFor(x => x.TimesheetId,Model.Timesheets,new{@class ="form-select "} )
+    </div>
+    <div class="form-group mt-2" >
+        <label>Payment Type</label>
+        <select asp-for="Type" asp-items="@Html.GetEnumSelectList(typeof(PaymentType))">
+
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-2">Add</button>
+</form>

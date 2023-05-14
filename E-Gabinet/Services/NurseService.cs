@@ -47,6 +47,7 @@ namespace Egabinet.Services
                 PatientId = model.SelectedPatient,
                 Data = model.SelectedData,
                 RoomId = model.SelectedRoom,
+                Amount = model.Amount,
             };
 
             await timesheetRepository.AddAsync(timesheet);
@@ -123,7 +124,7 @@ namespace Egabinet.Services
 
         public async Task<List<TimeSheetViewModel>> ShowTimesheet()
         {
-            List<TimeSheetViewModel> viewModel = await timesheetRepository.GetAllAsync().Select(t => new TimeSheetViewModel { Patient = $"{t.Patient.Name} {t.Patient.Surname}", Doctor = $"{t.Doctor.Name} {t.Doctor.Surname}", Room = t.Room.Number, Date = t.Data, Id = t.Id }).ToListAsync();
+            List<TimeSheetViewModel> viewModel = await timesheetRepository.GetAllAsync().Select(t => new TimeSheetViewModel { Patient = $"{t.Patient.Name} {t.Patient.Surname}", Doctor = $"{t.Doctor.Name} {t.Doctor.Surname}", Room = t.Room.Number, Date = t.Data, Id = t.Id, PaymentId = t.PaymentId, Amount = t.Amount }).ToListAsync();
             return viewModel;
 
         }

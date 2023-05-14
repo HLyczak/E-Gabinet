@@ -25,5 +25,10 @@ namespace Core.Domain
         public string RoomId { get; set; }
 
         public Room Room { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal Amount { get; set; }
+
+        public string? PaymentId { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Egabinet.Models.PaymentDto>
+
+
+<h1>Users:</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserId)</th>
+            <th>@Html.DisplayNameFor(model => model.Amount)</th>
+            <th>@Html.DisplayNameFor(model => model.Type)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PaymentDto item in Model)
+        {
+            <tr>
+                <td>
+                    @item.UserId
+
+                </td>
+                <td>
+                    @item.Amount
+
+                </td>
+                <td>
+                    @item.Type
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -23,6 +23,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultUI()
         .AddDefaultTokenProviders();
+
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddTransient<INurseRepository, NurseRepository>();
 builder.Services.AddTransient<IPatientRepository, PatientRepository>();
@@ -34,9 +35,14 @@ builder.Services.AddTransient<INurseService, NurseService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<IPatientService, PatientService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IPaymentService, PaymentService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpClient<IPaymentService, PaymentService>(c =>
+{
+    c.BaseAddress = new Uri("https://localhost:7155/");
+});
 
 WebApplication app = builder.Build();
 

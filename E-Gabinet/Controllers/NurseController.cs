@@ -1,23 +1,28 @@
-﻿using Egabinet.Models;
+﻿
+using Egabinet.Models;
 using Egabinet.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Egabinet.Controllers
 {
     public class NurseController : Controller
     {
         private readonly INurseService nurseService;
+        private readonly IPaymentService paymentService;
 
-        public NurseController(INurseService nurseService)
+
+        public NurseController(INurseService nurseService, IPaymentService paymentService)
         {
             this.nurseService = nurseService;
+            this.paymentService = paymentService;
         }
 
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var nurse = await nurseService.GetNurseAsync(User.Identity.Name);
+            NurseViewModel nurse = await nurseService.GetNurseAsync(User.Identity.Name);
             return View(nurse);
         }
 
@@ -25,7 +30,7 @@ namespace Egabinet.Controllers
         [Authorize]
         public async Task<IActionResult> EditNurse()
         {
-            var viewModel = await nurseService.GetUpdateNurseViewModel(User.Identity.Name);
+            UpdateNurseViewModel viewModel = await nurseService.GetUpdateNurseViewModel(User.Identity.Name);
             return View("EditNurse", viewModel);
         }
 
@@ -66,14 +71,14 @@ namespace Egabinet.Controllers
         [HttpGet]
         public async Task<IActionResult> ShowTimesheet()
         {
-            var viewModel = await nurseService.ShowTimesheet();
+            List<TimeSheetViewModel> viewModel = await nurseService.ShowTimesheet();
             return View(viewModel);
         }
 
         [HttpGet]
         public async Task<IActionResult> ShowUsers()
         {
-            var viewModelUser = await nurseService.ShowUsers();
+            IEnumerable<ShowUsersViewModel> viewModelUser = await nurseService.ShowUsers();
 
             return View(viewModelUser);
         }
@@ -82,10 +87,26 @@ namespace Egabinet.Controllers
         [HttpGet]
         public async Task<IActionResult> AddVisit()
         {
-            var viewModel = await nurseService.GetAddVisitViewModel();
+            AddVisitViewModel viewModel = await nurseService.GetAddVisitViewModel();
             return View("AddVisit", viewModel);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ShowPayments()
+        {
+            IEnumerable<PaymentDto> payments = await paymentService.GetAllAsync();
+
+            return View(payments);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddPayment()
+        {
+            IEnumerable<SelectListItem> viewModel = (await nurseService.ShowTimesheet()).Where(x => x.PaymentId is null).Select(x => new SelectListItem($"Patient: {x.Patient}, Doctor: {x.Doctor}, Price: {x.Amount} ", x.Id));
+
+            AddPaymentDto addPayment = new AddPaymentDto { Timesheets = viewModel };
+            return View(addPayment);
+        }
     }
 }
 
