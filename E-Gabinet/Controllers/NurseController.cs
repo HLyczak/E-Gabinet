@@ -107,6 +107,14 @@ namespace Egabinet.Controllers
             AddPaymentDto addPayment = new AddPaymentDto { Timesheets = viewModel };
             return View(addPayment);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPayment(AddPaymentDto model)
+        {
+
+            await paymentService.AddAsync(model);
+            return RedirectToAction("ShowPayments");
+        }
     }
 }
 

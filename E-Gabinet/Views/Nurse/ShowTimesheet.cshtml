@@ -8,6 +8,7 @@
             <th>@Html.DisplayNameFor(model => model.Doctor)</th>
             <th>@Html.DisplayNameFor(model => model.Room)</th>
             <th>@Html.DisplayNameFor(model => model.Date)</th>
+            <th> Paid</th>
         </tr>
     </thead>
     <tbody>
@@ -27,12 +28,26 @@
                     @item.Date
                 </td>
                 <td>
+                    @if (item.PaymentId == null)
+                    {
+
+                        <p>✅</p>
+                    }
+                    else
+                    {
+                        <p>❌</p>
+                    }
+                </td>
+                <td>
                     <form asp-action="DeleteVisit" asp-route-id="@item.Id" method="post">
                         <button type="submit" class="btn btn-link">
-                            Delete
+                            🗑️
                         </button>
                     </form>
                 </td>
+              
+
+
             </tr>
         }
     </tbody>

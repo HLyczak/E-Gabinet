@@ -1,23 +1,42 @@
-﻿
+﻿using Core.Domain;
+using Core.Repositories;
 using Egabinet.Models;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Egabinet.Services
 {
     public class PaymentService : IPaymentService
     {
         private readonly HttpClient httpClient;
-        public PaymentService(HttpClient httpClient)
+        private readonly ITimesheetRepository timesheetRepository;
+
+        public PaymentService(HttpClient httpClient, ITimesheetRepository timesheetRepository)
         {
             this.httpClient = httpClient;
+            this.timesheetRepository = timesheetRepository;
         }
 
 
 
-        public Task<PaymentDto> AddAsync(AddPaymentDto addPaymentDto)
+        public async Task<PaymentDto?> AddAsync(AddPaymentDto addPaymentDto)
         {
-            throw new NotImplementedException();
+            TimeSheet timesheet = await timesheetRepository.GetByIdAsync(addPaymentDto.TimesheetId);
+
+            string json = JsonConvert.SerializeObject(new { UserId = timesheet.PatientId, timesheet.Amount, addPaymentDto.Type });
+            StringContent data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await httpClient.PostAsync("api/Payment", data);
+            string result = await response.Content.ReadAsStringAsync();
+
+            PaymentDto? payment = JsonConvert.DeserializeObject<PaymentDto>(result);
+            timesheet.PaymentId = payment.Id;
+
+            TimeSheet timesheeupdate = await timesheetRepository.UpdateAsync(timesheet);
+
+            return payment;
         }
+
 
         public async Task<IEnumerable<PaymentDto>> GetAllAsync()
         {
@@ -32,9 +51,6 @@ namespace Egabinet.Services
 
         }
 
-        public Task<PaymentDto?> GetByIdAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
+

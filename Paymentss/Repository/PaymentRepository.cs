@@ -42,7 +42,7 @@ namespace Payments.Repository
             await _dbContext.AddAsync(payment);
             await _dbContext.SaveChangesAsync();
 
-            PaymentDto paymentDto = new PaymentDto { Id = payment.Id, Amount = payment.Amount, Type = payment.Type, UserId = payment.UserId };
+            PaymentDto paymentDto = new PaymentDto { Id = payment.Id, Amount = payment.Amount, Type = payment.Type, UserId = payment.UserId, };
             return paymentDto;
         }
 

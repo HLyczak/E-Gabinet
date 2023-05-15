@@ -10,6 +10,7 @@ namespace Core.Repositories
         public IQueryable<TimeSheet> GetAllByDoctorIdAsync(string id);
         public Task RemoveAsync(string id);
         public Task<TimeSheet> AddAsync(TimeSheet timeSheet);
+        public Task<TimeSheet> UpdateAsync(TimeSheet timeSheet);
 
     }
 }

@@ -43,10 +43,17 @@ namespace Core.Repositories
 
         public async Task RemoveAsync(string id)
         {
-            var timeSheet = await GetByIdAsync(id);
+            TimeSheet timeSheet = await GetByIdAsync(id);
             _dbContext.Remove(timeSheet);
             await _dbContext.SaveChangesAsync();
 
+        }
+        public async Task<TimeSheet> UpdateAsync(TimeSheet timeSheet)
+        {
+            _dbContext.Update(timeSheet);
+            await _dbContext.SaveChangesAsync();
+
+            return timeSheet;
         }
     }
 }
