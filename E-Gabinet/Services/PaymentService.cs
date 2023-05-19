@@ -15,6 +15,7 @@ namespace Egabinet.Services
         {
             this.httpClient = httpClient;
             this.timesheetRepository = timesheetRepository;
+
         }
 
 
@@ -37,10 +38,11 @@ namespace Egabinet.Services
             return payment;
         }
 
-
         public async Task<IEnumerable<PaymentDto>> GetAllAsync()
         {
+
             HttpResponseMessage response = await httpClient.GetAsync("api/Payment");
+
             if (response.IsSuccessStatusCode)
             {
 

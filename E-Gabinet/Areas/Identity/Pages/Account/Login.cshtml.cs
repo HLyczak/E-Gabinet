@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace Egabinet.Areas.Identity.Pages.Account
 {
@@ -109,13 +112,30 @@ namespace Egabinet.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                IdentityUser user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                if (result.Succeeded && user != null)
                 {
 
-                    var nurse = await _dbContext.Nurse.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
-                    var doctor = await _dbContext.Doctor.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
-                    var patient = await _dbContext.Patient.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
+                    Core.Domain.Nurse nurse = await _dbContext.Nurse.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
+                    Core.Domain.Doctor doctor = await _dbContext.Doctor.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
+                    Core.Domain.Patient patient = await _dbContext.Patient.SingleOrDefaultAsync(n => n.User.Email == Input.Email);
+
+                    Claim[] claims = new[] { new Claim(JwtRegisteredClaimNames.Sub, user.UserName) };
+                    SymmetricSecurityKey signinKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("your-symmetric-security-key"));
+
+                    JwtSecurityToken token = new JwtSecurityToken(
+                        issuer: "https://localhost:7155/",
+                        audience: "https://localhost:7155/",
+                        expires: DateTime.UtcNow.AddHours(1),
+                        claims: claims,
+                        signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256));
+
+                    string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+                    // Przechowaj token dostępu w sesji lub ciasteczku
+                    HttpContext.Session.SetString("JWTToken", accessToken);
+
 
                     return nurse != null
                         ? RedirectToAction("Index", "Nurse")
@@ -137,6 +157,8 @@ namespace Egabinet.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
+
+
             }
 
             // If we got this far, something failed, redisplay form

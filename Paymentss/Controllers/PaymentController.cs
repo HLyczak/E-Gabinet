@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Payments.Dto;
 using Payments.Repository;
 
@@ -8,6 +9,7 @@ namespace Payments.Controllers
 {
 
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class PaymentController : ControllerBase
     {
