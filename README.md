@@ -1,5 +1,4 @@
 # E-Gabinet
-# EGabinet
 
 ## Projekt EGabinet przygotowany na potrzebę obsługi przychodni medycznej. 
 
