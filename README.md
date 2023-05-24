@@ -21,14 +21,13 @@ pacjent, pielęgniarka, lekarz.
 * MSSQL
 * XUNIT
 * MOQ
-* SWAGGER
-* AZURE 
+* SWAGGER 
 * BOOSTRAP
 
 
 ### Uruchomienie:
 ```
-git clone https://github.com/HLyczak/Egabinet.git
+git clone [https://github.com/HLyczak/E-gabinet.git](https://github.com/HLyczak/E-Gabinet.git)
 cd Egabinet/Egabinet 
 dotnet run
 wejdź na: https://localhost:7253/
