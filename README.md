@@ -9,7 +9,8 @@ pacjent, pielęgniarka, lekarz.
 * dodawanie / usuwanie wizyt w przychodni,
 * zmiana danych użytkownika,
 * wyświetlanie listy wizyt i użytkowników,
-* oddzielne widoki dla poszczególnych ról.
+* oddzielne widoki dla poszczególnych ról,
+* mikroserwis obsługujący płatności, autoryzacja.
 
 ### Technologie:
 * ASP.NET CORE MVC
