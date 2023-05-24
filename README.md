@@ -28,10 +28,16 @@ pacjent, pielęgniarka, lekarz.
 ### Uruchomienie:
 ```
 git clone [https://github.com/HLyczak/E-gabinet.git](https://github.com/HLyczak/E-Gabinet.git)
-cd Egabinet/Egabinet 
+cd E-gabinet/E-gabinet 
 dotnet run
-wejdź na: https://localhost:7253/
+wejdź na: [https://localhost:7253/](https://localhost:7177/)
+Otwórz drugą konsolę w lokalizacji projektu:
+cd E-Gabinet
+cd Payments
+dotnet run
+
 ```
+
 Przykładowi użytkownicy:
 * pielęgniarka: user5@op.pl hasło: Admin123!
 * pacjnet: user1@op.pl hasło: Admin123!
